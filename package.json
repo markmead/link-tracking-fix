@@ -1,5 +1,5 @@
 {
-  "name": "a-tag-not-tracking-fix",
+  "name": "link-tracking-fix",
   "version": "1.0.0",
   "description": "Write React/Vue like components with HTML, built off the power of fetch",
   "main": "index.js",
