@@ -1,6 +1,6 @@
 {
   "name": "link-tracking-fix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Write React/Vue like components with HTML, built off the power of fetch",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,6 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-preset-minify": "^0.5.1"
-  }
+  },
+  "dependencies": {}
 }
