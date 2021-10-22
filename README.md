@@ -1,18 +1,48 @@
-# `<a>` Tag Not Tracking Fix
+# Link Tracking Fix 🔗
 
-This is a simple fix for `<a>` tags not tracking in Google Anayltics
+This fixes the issue (original found in Google Analytics) of link tags not being tracked correctly when they have child elements.
 
-### When Would They Not Track?
+## Install
 
-The most common example is when you have a link with inner HTML:
+```
+npm install link-tracking-fix
+yarn add link-tracking-fix
+```
+
+## Usage
+
+```js
+import { LinkTrackingFix } from "link-tracking-fix"
+
+new LinkTrackingFix()
+```
+
+## Disable on Certain Links
+
+There might be an occasion when you'd want to disable this fix, to do so you can add `data-disable-link-tracking-fix` to the link tag.
 
 ```html
-<a>
-  Click me!
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-  </svg>
+<a href="/" data-disable-link-tracking-fix>
+  Hello!
+  <span role="img">👉</span>
 </a>
 ```
 
-If he user clicks the `<svg>` the link will work but this CAN result in the click not being registered in Google Anayltics (maybe other tracking software)
+## When Would They Not Track?
+
+The most common example would be a link tag with an icon.
+
+```html
+<a href="/">
+  Hello!
+  <span role="img">👉</span>
+</a>
+```
+
+Without this package when a user clicks the `<span>` element Google Analytics (maybe other tracking software) won't pick that up as a clicked link.
+
+This is bad if you are tracking how many users are clicking your links, especially contact links.
+
+## What About Links with Buttons?
+
+That's been handled 😅
