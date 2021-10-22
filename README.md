@@ -1,6 +1,6 @@
 # Link Tracking Fix 🔗
 
-This fixes the issue (original found in Google Analytics) of link tags not being tracked correctly when they have child elements.
+Fixes the issue (original found in Google Analytics) of link tags not being tracked correctly when they have child elements.
 
 ## Install
 
