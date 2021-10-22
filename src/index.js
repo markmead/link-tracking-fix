@@ -1,16 +1,30 @@
-export function linkTrackingFix() {
-  const as = [...document.getElementsByTagName('a')]
+export class LinkTrackingFix {
+  constructor() {
+    const self = this
+    const linkElements = [...document.getElementsByTagName("a")]
 
-  for (let a of as) {
-    const cs = a.children
+    linkElements.forEach(function (linkElement) {
+      if (linkElement.hasAttribute("data-disable-link-tracking-fix")) return
 
-    for (let c of cs) {
-      if (c.tagName === 'BUTTON') {
-        ccs = c.children
-        for (let cc of ccs) cc.style.pointerEvents = 'none'
-      } else {
-        c.style.pointerEvents = 'none'
-      }
-    }
+      const linkChildren = [...linkElement.children]
+
+      linkChildren.forEach(function (childElement) {
+        const { tagName } = childElement
+
+        if (tagName === "BUTTON") {
+          const buttonChildren = [...childElement.children]
+
+          buttonChildren.forEach((subChildElement) =>
+            self.setPointerEvents(subChildElement)
+          )
+        } else {
+          self.setPointerEvents(childElement)
+        }
+      })
+    })
+  }
+
+  setPointerEvents(el) {
+    el.style.pointerEvents = "none"
   }
 }
